@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Media Downloader</title>
+    <style>
+        :root {
+            --bg-color: #0a0f1d;
+            --card-bg: #111827;
+            --accent-cyan: #00f2fe;
+            --text-white: #f9fafb;
+            --text-gray: #9ca3af;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--text-white);
+            margin-bottom: 5px;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            color: white;
+            box-sizing: border-box;
+            font-size: 1.0rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #0072ff, var(--accent-cyan));
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .status {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MEDIA DOWNLOADER</h1>
+    <div class="subtitle">Online Terminal Engine</div>
+    
+    <form action="/download" method="POST" onsubmit="showLoading()">
+        <div class="form-group">
+            <label for="url">👉 Paste Video or Playlist URL</label>
+            <input type="text" id="url" name="url" placeholder="https://www.youtube.com/..." required>
+        </div>
+
+        <div class="form-group">
+            <label for="format">📊 Choose Output Format</label>
+            <select id="format" name="format">
+                <option value="video">Best Quality Video (MP4)</option>
+                <option value="audio">High Quality Audio (MP3)</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">⚡ Fetch & Download</button>
+    </form>
+    
+    <div class="status" id="loadingText">📥 Processing details... your download will start automatically once ready.</div>
+</div>
+
+<script>
+    function showLoading() {
+        document.getElementById('loadingText').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
+
